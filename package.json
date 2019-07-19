@@ -1,0 +1,38 @@
+{
+  "name": "mdnote-service",
+  "version": "1.0.0",
+  "description": "koa2+typescript",
+  "main": "index.ts",
+  "scripts": {
+    "start": "npm run serve",
+    "serve": "tsc && node build/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zero9527/mdnote-service.git"
+  },
+  "keywords": [
+    "koa2",
+    "typescript"
+  ],
+  "author": "zero9527",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zero9527/mdnote-service/issues"
+  },
+  "homepage": "https://github.com/zero9527/mdnote-service#readme",
+  "dependencies": {
+    "@types/lodash": "^4.14.136",
+    "@types/node": "^12.6.8",
+    "koa": "^2.7.0",
+    "koa-router": "^7.4.0",
+    "lodash": "^4.17.15"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.0.49",
+    "@types/koa-router": "^7.0.42",
+    "tslint": "^5.18.0",
+    "typescript": "^3.5.3"
+  }
+}
