@@ -1,7 +1,7 @@
-import { Context } from 'koa';
+import { RouterContext } from 'koa-router';
 import { ResBody } from './interface';
 
-exports.getFile = async (ctx: Context, next: any) => {
+exports.getFile = async (ctx: RouterContext, next: () => Promise<any>) => {
   console.log('ctx--getFile: ', ctx);
   const res: ResBody = {
     status: 200,

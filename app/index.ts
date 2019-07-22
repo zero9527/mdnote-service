@@ -2,9 +2,10 @@ const Koa = require('koa');
 // const os = require('os');
 const router = require('koa-router')();
 const api = require('./api');
+import { RouterContext } from 'koa-router';
 
 const app = new Koa();
-app.use(async (ctx: any, next: any) => {
+app.use(async (ctx: RouterContext, next: () => Promise<any>) => {
   console.log('ctx: ', ctx);
   await next();
 });
