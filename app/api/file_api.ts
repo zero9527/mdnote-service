@@ -1,6 +1,9 @@
-const fileRouter = require('koa-router')();
-const file_controller = require('../controllers/file_controller');
+import router from 'koa-router';
+import { getFile, uploadFile } from '../controllers/file';
 
-fileRouter.get('/getFile', file_controller.getFile);
+const Router = new router();
 
-module.exports = fileRouter;
+Router.get('/getFile', getFile);
+Router.post('/uploadFile', uploadFile);
+
+export default Router;

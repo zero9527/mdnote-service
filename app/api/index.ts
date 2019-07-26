@@ -1,6 +1,10 @@
-const apiRouter = require('koa-router')();
-const file_api = require('./file_api');
+import router from 'koa-router';
+import file_api from './file_api';
+import user_api from './user_api';
 
-apiRouter.use('/file', file_api.routes(), file_api.allowedMethods());
+const Router = new router();
 
-export default apiRouter;
+Router.use('/file', file_api.routes(), file_api.allowedMethods());
+Router.use('/user', user_api.routes(), user_api.allowedMethods());
+
+export default Router;
