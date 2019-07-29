@@ -1,16 +1,20 @@
 import { RouterContext } from 'koa-router';
 import { ResBody } from '../interface';
+import { getRandomStr } from '../../utils';
 
 // 登录
 export function login(
   ctx: RouterContext,
   next: () => Promise<any>
 ) {
-  console.log('ctx.request: ', ctx.request);
+  console.log('login-req-body: ', ctx.request.body);
   const res: ResBody = {
     // status: 200,
     error_code: 1,
-    data: {},
+    data: {
+      name: ctx.request.body.name,
+      access_token: getRandomStr()
+    },
     msg: '登录成功！'
   };
   ctx.body = res;
@@ -23,13 +27,11 @@ export function register(
   ctx: RouterContext,
   next: () => Promise<any>
 ) {
-  console.log('ctx.request: ', ctx.request);
+  console.log('register-req-body: ', ctx.request.body);
   const res: ResBody = {
     // status: 200,
     error_code: 1,
-    data: {
-      access_token: 'dfjkdst56df56dfd5jfkdjkfdf'
-    },
+    data: {},
     msg: '注册成功！'
   };
   ctx.body = res;
