@@ -22,15 +22,15 @@ App.use(async (ctx: RouterContext, next: () => Promise<any>) => {
 });
 
 // 静态资源服务
-App.use(KoaStatic(path.resolve(__dirname, '../views')))
+// App.use(KoaStatic(path.resolve(__dirname, '../views')));
 
 // 网页渲染
-App.use(async (ctx: RouterContext, next: () => Promise<any>) => {
-  ctx.type = 'html';
-  ctx.body = await fs.createReadStream(path.resolve(__dirname, '../views/index.html'));
+// App.use(async (ctx: RouterContext, next: () => Promise<any>) => {
+//   ctx.type = 'html';
+//   ctx.body = await fs.createReadStream(path.resolve(__dirname, '../views/index.html'));
 
-  next();
-})
+//   next();
+// })
 
 // api
 Router.use('/api', api.routes(), api.allowedMethods());

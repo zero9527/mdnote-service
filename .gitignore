@@ -9,6 +9,8 @@
 # production
 /build
 
+package-lock.json
+
 # misc
 .env.local
 .env.development.local
