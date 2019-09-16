@@ -7,8 +7,7 @@ export async function getFile(
 ) {
   console.log('ctx--getFile: ', ctx);
   const res: ResBody = {
-    // status: 200,
-    error_code: 1,
+    status: 200,
     data: 'getFile',
     msg: ''
   };
@@ -23,8 +22,7 @@ export async function uploadFile(
 ) {
   console.log('ctx--uploadFile: ', ctx);
   const res: ResBody = {
-    // status: 200,
-    error_code: 1,
+    status: 200,
     data: 'uploadFile',
     msg: ''
   };

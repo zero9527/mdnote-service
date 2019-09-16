@@ -8,12 +8,11 @@ export function login(
   next: () => Promise<any>
 ) {
   console.log('login-req-body: ', ctx.request.body);
-  const{ name } = ctx.request.body;
+  const { name } = ctx.request.body;
   const res: ResBody = {
-    // status: 200,
-    error_code: name !== 'admin' ? 0 : 1,
+    status: name !== 'admin' ? 401 : 200,
     data: {
-      name: ctx.request.body.name,
+      name,
       access_token: getRandomStr()
     },
     msg: name !== 'admin' ? '用户名或密码错误！' : '登录成功！'
@@ -36,8 +35,7 @@ export function register(
 ) {
   console.log('register-req-body: ', ctx.request.body);
   const res: ResBody = {
-    // status: 200,
-    error_code: 1,
+    status: 200,
     data: {},
     msg: '注册成功！'
   };
