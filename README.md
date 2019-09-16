@@ -1,5 +1,5 @@
 # koa2+typescript
-玩玩 Node.js 的简单后台服务
+Node.js 的简单后台服务
 
 暂时使用koa2+typescript+koa-router
 
