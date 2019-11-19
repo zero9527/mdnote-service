@@ -3,11 +3,12 @@ import os from 'os';
 import fs from 'fs';
 import path from 'path';
 import chalk from 'chalk';
-import router from 'koa-router';
 import KoaStatic from 'koa-static';
 import bodyParser from 'koa-bodyparser';
-import { RouterContext } from 'koa-router';
-import api from './api';
+import router, { RouterContext } from 'koa-router';
+import controllers from './controllers';
+
+process.env.src = path.resolve(__dirname, '../');
 
 const App = new Koa();
 const Router = new router();
@@ -32,9 +33,9 @@ App.use(async (ctx: RouterContext, next: () => Promise<any>) => {
 //   next();
 // })
 
-// api
-Router.use('/api', api.routes(), api.allowedMethods());
-App.use(Router.routes());
+// api 接口
+// Router.use('/v1', controllers.routes(), controllers.allowedMethods());
+App.use(controllers.routes());
 
 const port = 2333;
 App.listen(port, () => {
