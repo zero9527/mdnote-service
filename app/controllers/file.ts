@@ -34,16 +34,37 @@ Router.post('/uploadFile',
     ctx: RouterContext, 
     next: () => Promise<any>
   ) {
-    console.log('ctx--uploadFile: ', ctx);
+    console.log('ctx--uploadFile: ', ctx.request.files);
     const res: ResBody = {
       status: 200,
-      data: 'uploadFile',
-      msg: ''
+      data: {
+        path: saveFile(ctx.request.files!.file)
+      },
+      msg: 'success'
     };
     ctx.body = res;
 
     next();
   }
 );
+
+// 保存文件，返回文件路径
+function saveFile(file: any): string {
+  let frs: any = fs.createReadStream(file.path);
+  let name = file.name.split('.');
+  const ext = name.pop();
+  const filePath = path.resolve(
+    `${process.env.src}/public/upload/${name.join('.')}.${
+      Date.now()
+    }.${
+      Math.random()
+    }.${ext}`
+  );
+  console.log('filePath: ', filePath);
+  const crs = fs.createWriteStream(filePath);
+  frs.pipe(crs);
+
+  return filePath;
+}
 
 export default Router;
