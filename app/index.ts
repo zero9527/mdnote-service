@@ -26,12 +26,12 @@ App.use(async (ctx: RouterContext, next: () => Promise<any>) => {
 // App.use(KoaStatic(path.resolve(__dirname, '../views')));
 
 // 网页渲染
-// App.use(async (ctx: RouterContext, next: () => Promise<any>) => {
-//   ctx.type = 'html';
-//   ctx.body = await fs.createReadStream(path.resolve(__dirname, '../views/index.html'));
+App.use(async (ctx: RouterContext, next: () => Promise<any>) => {
+  ctx.type = 'html';
+  ctx.body = await fs.createReadStream(path.resolve(__dirname, '../views/index.html'));
 
-//   next();
-// })
+  next();
+})
 
 // api 接口
 // Router.use('/v1', controllers.routes(), controllers.allowedMethods());
