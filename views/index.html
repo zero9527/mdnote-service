@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./utils/index.js"></script>
+</head>
+<body>
+  <h2>Hello World!</h2>
+  <hr />
+  <json-type></json-type>
+  <hr />
+  <form-type></form-type>
+  <hr />
+
+  <script src="./components/json-type.js"></script>
+  <script src="./components/form-type.js"></script>
+
+  <p>
+    <button onclick="getAppVersion()">获取App版本</button>
+    <div id="app-version">
+        当前最新版本：xx
+    </div>
+  </p>
+</body>
+<script>
+  function getAppVersion() {
+    fetchData('/app/getCurrentVersion')
+    .then(res => {
+      console.log('res: ', res);
+      if (res.status === 200) {
+        getDom('#app-version').innerHTML = `当前最新版本：${res.data}`;
+      }
+    });
+  }
+</script>
+</html>

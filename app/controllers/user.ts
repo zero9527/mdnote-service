@@ -6,7 +6,7 @@ const Router = new router();
 
 // 登录
 Router.post('/login', login);
-function login(
+async function login(
   ctx: RouterContext,
   next: () => Promise<any>
 ) {
@@ -14,10 +14,10 @@ function login(
   const { name } = ctx.request.body;
   const res: ResBody = {
     status: name !== 'admin' ? 401 : 200,
-    data: {
+    data: name === 'admin' ? {
       name,
       access_token: getRandomStr()
-    },
+    } : {},
     msg: name !== 'admin' ? '用户名或密码错误！' : '登录成功！'
   };
   // ctx.cookies.set('auth', Date.now()+'', {
@@ -32,21 +32,20 @@ function login(
 }
 
 // 注册
-Router.post('/register', 
-  function register(
-    ctx: RouterContext,
-    next: () => Promise<any>
-  ) {
-    console.log('register-req-body: ', ctx.request.body);
-    const res: ResBody = {
-      status: 200,
-      data: {},
-      msg: '注册成功！'
-    };
-    ctx.body = res;
+Router.post('/register', register);
+async function register(
+  ctx: RouterContext,
+  next: () => Promise<any>
+) {
+  console.log('register-req-body: ', ctx.request.body);
+  const res: ResBody = {
+    status: 200,
+    data: {},
+    msg: '注册成功！'
+  };
+  ctx.body = res;
 
-    next();
-  }
-);
+  next();
+}
 
 export default Router;
